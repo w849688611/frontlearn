@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>计算器</title>
+		<style type="text/css">
+			.row{
+				display: flex;
+				flex-wrap: wrap;
+				flex-direction: row;
+				justify-content: space-around;
+				align-items: center;
+				width: 50%;
+				margin: 0 auto;
+			}
+			.row button{
+				min-width: 100px;
+				height: 80px;
+				background: white;
+				outline: none;
+				transition: all .25s ease;
+				text-align: center;
+				color: #000000;
+				font-size: 14px;
+				font-family: "微软雅黑";
+				line-height: 80px;
+				flex-grow: 1;
+				margin: 10px;
+				border: 1px solid #e4ecf3;
+				border-radius: 2px;
+			}
+			.row button:hover{
+				transform: scale(1.1);
+				box-shadow: 0px 2px 5px #EAEAEA;
+			}
+			.row button:active{
+				background: #1E90FF;
+				color: white;
+			}
+			.equal{
+				min-width: 200px;
+				flex-grow: 2;
+			}
+			.result{
+				width: 60%;
+				outline: none;
+				height: 80px;
+				padding: 10px;
+				text-align: right;
+				margin: 0 auto;
+				background: #EAEAEA;
+				border: none;
+				font-size: 60px;
+				line-height: 80px;
+				color: black;
+			}
+		</style>
+	</head>
+	<script type="text/javascript">
+		var pre_value=0;
+		var start_new_input=true;
+		var expression="";
+		function test(strCmd){
+			alert(strCmd);
+		}
+		function complute(strCmd){
+			var op=getOp(strCmd);
+			switch(op){
+				case 'ac':
+				pre_value=0;
+				start_new_input=true;
+				expression="";
+				$('result').value=0;
+				break;
+				case 'sin':
+				 $('result').value=Math.sin($('result').value);
+				 pre_value=$('result').value;
+				 start_new_input=true;
+				 break;
+				 case 'cos':
+				 $('result').value=Math.cos($('result').value);
+				  pre_value=$('result').value;
+				 start_new_input=true;
+				 break;
+				 case 'tan':
+				 $('result').value=Math.tan($('result').value);
+				  pre_value=$('result').value;
+				 start_new_input=true;
+				 break;
+				 case 'cot':
+				 $('result').value=1/Math.tan($('result').value);
+				  pre_value=$('result').value;
+				 start_new_input=true;
+				 break;
+				 case 'log':
+				 if($('result').value>0){
+				 	$('result').value=Math.log($('result').value);
+				  pre_value=$('result').value;
+				 start_new_input=true;
+				 }
+				 break;
+				 case 'sqrt':
+				 if($('result').value>0){
+				 	$('result').value=Math.sqrt($('result').value);
+				  pre_value=$('result').value;
+				 start_new_input=true;
+				 }
+				 break;
+				 case "+":
+				 case '-':
+				 case '*':
+				 case '/':
+				 if(start_new_input==false){
+				 	expression=expression+$('result').value+op;
+				 	start_new_input=true;
+				 }
+				 else{
+				 	expression=expression+pre_value+op;
+				 }
+				 break;
+				 case '=':
+				 expression+=$('result').value;
+				 $('result').value=pre_value=eval(expression);
+				 expression="";
+				 start_new_input=true;
+				 break;
+				 case '.':
+				 if($('result').value.indexOf('.')!=-1)
+				 	break;
+				 default:
+				 if(start_new_input){
+				 	$('result').value=0;
+				 	start_new_input=false;
+				 }
+				 if($('result').value!="0"){
+				 	$('result').value=$('result').value+op;
+				 }
+				 else{
+				 	if(op!="0"){
+				 		$('result').value=op;
+				 	}
+				 }
+			}
+		}
+		function getOp(btn){
+			return btn.innerText;
+		}
+		function $(id){
+			return document.getElementById(id);
+		}
+	</script>
+
+	<body>
+		<div style="text-align: center;">
+			<input type="text" class="result"  id='result' disabled="disabled" value="0"/>
+		</div>
+		<div class="row">
+			<button onclick="complute(this)">+</button>
+			<button  onclick="complute(this)">-</button>
+			<button  onclick="complute(this)">*</button>
+			<button  onclick="complute(this)">/</button>
+			<button  onclick="complute(this)">sin</button>
+			<button  onclick="complute(this)">cos</button>
+			<button  onclick="complute(this)">tan</button>
+			<button  onclick="complute(this)">cot</button>
+			<button  onclick="complute(this)">log</button>
+			<button  onclick="complute(this)">sqrt</button>
+			<button  onclick="complute(this)">ac</button>
+		</div>
+		<div class="row">
+			<button  onclick="complute(this)">1</button>
+			<button  onclick="complute(this)">2</button>
+			<button  onclick="complute(this)">3</button>
+			<button  onclick="complute(this)">4</button>
+			<button  onclick="complute(this)">5</button>
+			<button  onclick="complute(this)">6</button>
+			<button  onclick="complute(this)">7</button>
+			<button  onclick="complute(this)">8</button>
+			<button  onclick="complute(this)">9</button>
+			<button  onclick="complute(this)">0</button>
+			<button  onclick="complute(this)">.</button>
+			<button class="equal"  onclick="complute(this)">=</button>
+		</div>
+	</body>
+</html>

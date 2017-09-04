@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Baidu</title>
+		<link rel="stylesheet" type="text/css" href="css/baidu.css" />
+		<link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico"/>
+	</head>
+
+	<body>
+		<div class="main">
+			<header id="mainHeader">
+				<div class="headerLinks">
+					<ul>
+						<li>
+							<a href="#">糯米</a>
+						</li>
+						<li>
+							<a href="#">新闻</a>
+						</li>
+						<li>
+							<a href="#">hao123</a>
+						</li>
+						<li>
+							<a href="#">地图</a>
+						</li>
+						<li>
+							<a href="#">视频</a>
+						</li>
+						<li>
+							<a href="#">贴吧</a>
+						</li>
+						<li>
+							<a href="#">登录</a>
+						</li>
+						<li class="dropListWrapper">
+							<a href="#" >设置</a>
+							<div class="arrow"></div>
+							<div class="dropList">
+								<ul>
+									<li>搜索设置</li>
+									<li>高级搜索</li>
+									<li>关闭预测</li>
+									<li>搜索历史</li>
+								</ul>
+							</div>
+						</li>
+						<li>
+							<a href="#" class="headerLinksMore" onmouseenter="headerOthersToggle(0)">更多产品</a>
+							<div class="headerOthers" onmouseleave="headerOthersToggle(1)">
+								<ul>
+									<li>
+										<a href="#"><img src="img/microphone.png" /></a>
+									</li>
+								</ul>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</header>
+			<div class="mainContent">
+				<div class="logo">
+					<div style="m"></div>
+				</div>
+				<div class="searchBar">
+					<input type="text" name="search" id="search" class="searchBarText" onfocus="searchBarTextToggle(0)" onblur="searchBarTextToggle(1)" />
+					<span class="searchWidget">
+		    	    	<a href="#" class="searchIcon">
+		    	    		<img src="img/microphone.png"/>
+		    	    	</a>
+		    	    	<a href="" class="searchIcon">
+		    	    		<img src="img/camera.png"/>
+		    	    	</a>
+		    	    </span>
+					<button class="searchBarSubmit">百度一下</button>
+				</div>
+
+				<div class="code">
+					<img src="img/code.png" />
+					<span>手机百度</span>
+				</div>
+				<div class="otherInfo">
+					<ul>
+						<li><a href="#">把百度设为首页</a></li>
+						<li><a href="#">关于百度</a></li>
+						<li><a href="#">About baidu</a></li>
+						<li><a href="#">百度推广</a></li>
+						<br />
+						<li><a href="#">©2017 Baidu 使用百度前必读 意见反馈 京ICP证030173号</a></li>
+						<li><a href="#">京公网安备11000002000001号 </a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		function searchBarTextToggle(step) {
+			var searchBar = document.getElementsByClassName('searchBar')[0];
+			if(searchBar != null && searchBar != undefined) {
+				switch(step) {
+					case 0:
+						searchBar.style.borderColor = "#1E99FF";
+						break;
+					case 1:
+						searchBar.style.borderColor = "#EAEAEA";
+						break;
+				}
+			}
+		}
+
+		function headerOthersToggle(step) {
+			var headerOthers = document.getElementsByClassName('headerOthers')[0];
+			var headerLinksMore = document.getElementsByClassName('headerLinksMore')[0];
+			if(headerOthers != null && headerOthers != undefined) {
+				switch(step) {
+					case 0:
+						headerOthers.style.visibility = "visible";
+						headerLinksMore.style.backgroundColor = "#EAEAEA";
+						headerLinksMore.style.color = "#123456";
+						break;
+					case 1:
+						headerOthers.style.visibility = "hidden";
+						headerLinksMore.style.backgroundColor = "#1E90FF";
+						headerLinksMore.style.color = "#FFFFFF";
+						break;
+				}
+			}
+		}
+	</script>
+
+</html>
